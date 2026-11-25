@@ -1,29 +1,1075 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hola Mundo | Mi primer despliegue SEO</title>
-  <meta name="description" content="Mi primera página publicada con Vite, GitHub y Vercel en el módulo de SEO de 1.º DAM." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto SEO (1º DAM) - Lanzamiento y Posicionamiento Orgánico</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        accent: {
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 9999px;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <nav>
-      <a href="/">Inicio</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Hola Mundo</h1>
-    <section>
-      <h2>Mi primer despliegue</h2>
-      <p>Esta página está hecha con HTML5 semántico, versionada con Git y publicada en Vercel.</p>
-           
-      <p>Ahora vamos a probar a cambiar algo del código</p>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
+    <!-- Header Navbar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg leading-none block font-heading">PROYECTO SEO</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">1º DAM · Grado Superior</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-6 text-sm font-medium">
+                <a href="#contexto" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Contexto</a>
+                <a href="#objetivos" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Objetivos</a>
+                <a href="#stack" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Stack</a>
+                <a href="#fases" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Fases</a>
+                <a href="#rubrica" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Rúbrica</a>
+                <a href="#monetizacion" class="hover:text-brand-600 dark:hover:text-brand-500 px-3 py-2 rounded-lg transition-colors">Monetización</a>
+            </nav>
+
+            <div class="flex items-center space-x-2">
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Cambiar tema">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+                <a href="#checklist" class="hidden sm:inline-flex items-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm px-4 py-2.5 rounded-xl shadow-lg shadow-brand-600/25 transition-all hover:scale-105">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Mi Progreso</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-16 lg:py-24 border-b border-slate-200 dark:border-slate-800/80 bg-gradient-to-b from-slate-100/60 to-slate-50 dark:from-slate-900/40 dark:to-slate-950">
+        <div class="absolute inset-0 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center space-x-2 bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-brand-200 dark:border-brand-800/50">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    <span>Módulo Optativo SEO · 1º DAM</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                    Lanzamiento y Posicionamiento <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-emerald-500 to-accent-500">Orgánico Web</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-normal leading-relaxed mb-8">
+                    Aprende a investigar, maquetar con marcado semántico, desplegar con CI/CD y medir el tráfico real de un sitio de nicho optimizado para motores de búsqueda.
+                </p>
+
+                <!-- Stats summary badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4 text-left">
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="text-brand-600 dark:text-brand-400 font-bold text-2xl font-heading">8 Sesiones</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">2 horas semanales</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="text-accent-600 dark:text-accent-400 font-bold text-2xl font-heading">3-4 Alumnos</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Trabajo en equipo</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="text-emerald-600 dark:text-emerald-400 font-bold text-2xl font-heading">5 Entregables</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Fases del proyecto</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="text-purple-600 dark:text-purple-400 font-bold text-2xl font-heading">IA + CI/CD</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Stack moderno</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
-  <footer>
-    <p>&copy; 2026 - Proyecto SEO 1.º DAM</p>
-  </footer>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 flex-grow">
+
+        <!-- 1. Introducción & 2. Contexto -->
+        <section id="contexto" class="scroll-mt-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Intro Card -->
+                <div class="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-4">1. Introducción al Proyecto</h2>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                            En este proyecto práctico, los estudiantes desarrollarán y posicionarán un <strong>sitio web de nicho temático</strong> orientado a resolver intenciones de búsqueda concretas en Google.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            La actividad abarca todo el <strong>ciclo de vida de un producto digital</strong>: desde la investigación de mercado inicial y selección de palabras clave, hasta el despliegue técnico automatizado y el análisis de tráfico orgánico en tiempo real.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-3 text-sm text-slate-500 dark:text-slate-400">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                        <span>Orientado a resolver intenciones de búsqueda informacionales, transaccionales y navegacionales.</span>
+                    </div>
+                </div>
+
+                <!-- Context Card -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-8 border border-slate-800 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/10 text-brand-400 flex items-center justify-center text-xl mb-6 backdrop-blur-md">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4">2. Contexto Académico</h2>
+                        <ul class="space-y-4 text-slate-300 text-sm">
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                                <span><strong>Módulo Optativo:</strong> SEO para Desarrollo de Aplicaciones Multiplataforma (1º DAM).</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-users text-brand-400 mt-1"></i>
+                                <span><strong>Modalidad:</strong> Equipos de 3 a 4 personas en dinámica colaborativa.</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-clock text-brand-400 mt-1"></i>
+                                <span><strong>Duración:</strong> 8 sesiones lectivas presenciales (2 horas semanales).</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <i class="fa-solid fa-layer-group text-brand-400 mt-1"></i>
+                                <span><strong>Integración:</strong> Frontend + Integración Continua (CI/CD) + Marketing Técnico.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-700/60 text-xs text-slate-400 flex justify-between items-center">
+                        <span>Grado Superior DAM</span>
+                        <span class="bg-brand-500/20 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/30">Práctico y Real</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Objetivos & 4. Stack Tecnológico -->
+        <section id="objetivos" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold mb-3">Objetivos & Stack Tecnológico</h2>
+                <p class="text-slate-600 dark:text-slate-400">Domina las herramientas reales de la industria del desarrollo e ingeniería SEO.</p>
+            </div>
+
+            <!-- Objectives cards -->
+            <div class="mb-12">
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <div class="bg-brand-500/10 border border-brand-500/20 rounded-2xl p-6 mb-8 text-center sm:text-left sm:flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 block mb-1">Objetivo General</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">Crear, desplegar y posicionar en buscadores un sitio web semántico utilizando IA</h3>
+                        </div>
+                        <span class="mt-4 sm:mt-0 inline-block px-4 py-2 rounded-xl bg-brand-600 text-white font-semibold text-xs shrink-0 shadow-md">Metodología Ágil</span>
+                    </div>
+
+                    <!-- Specific objectives grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/50">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold mb-4">1</div>
+                            <h4 class="font-bold mb-2">Keyword Research</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Estudio de palabras clave e identificación de intenciones de búsqueda reales.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/50">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold mb-4">2</div>
+                            <h4 class="font-bold mb-2">HTML5 Semántico</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Diseño de arquitectura visual de URLs y maquetación web accesible.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/50">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center font-bold mb-4">3</div>
+                            <h4 class="font-bold mb-2">Flujo CI/CD</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Control de versiones profesional con GitHub y despliegue automático en Vercel o Netlify.</p>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/50">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center font-bold mb-4">4</div>
+                            <h4 class="font-bold mb-2">Analítica Real</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Configuración de Google Search Console y Google Analytics 4 (GA4) para medir rastreo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Stack Cards Grid -->
+            <div id="stack" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Stack 1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-code fa-brands fa-html5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Generación & Diseño</h3>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Frontend Semántico</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>HTML5 Semántico + CSS3</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Tailwind CSS</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-robot text-purple-500"></i><span>Asistido por IA (ChatGPT, Claude, Cursor, v0.dev)</span></li>
+                    </ul>
+                </div>
+
+                <!-- Stack 2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center text-lg font-bold">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Control de Versiones</h3>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Git Workflow</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Repositorio público en GitHub</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Commits limpios por equipo</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Gestión de ramas / Main</span></li>
+                    </ul>
+                </div>
+
+                <!-- Stack 3 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-accent-500/10 text-accent-600 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">Hosting & CI/CD</h3>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Despliegue Continuo</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Vercel o Netlify</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Certificado SSL (HTTPS)</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Deploy automático en Push</span></li>
+                    </ul>
+                </div>
+
+                <!-- Stack 4 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-500 transition-all hover:-translate-y-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm">SEO & Analítica</h3>
+                            <span class="text-xs text-slate-500 dark:text-slate-400">Medición On-Page</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Google Search Console</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Google Analytics 4 (GA4)</span></li>
+                        <li class="flex items-center space-x-2"><i class="fa-solid fa-angle-right text-brand-500"></i><span>Schema.org + JSON-LD</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Fases y Entregables -->
+        <section id="fases" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 block mb-2">Hoja de Ruta del Proyecto</span>
+                <h2 class="text-3xl font-bold mb-3">5 Fases del Proyecto y Entregables</h2>
+                <p class="text-slate-600 dark:text-slate-400">Haz clic en cada fase para consultar sus requisitos detallados.</p>
+            </div>
+
+            <!-- Timeline accordion wrapper -->
+            <div class="space-y-6">
+                
+                <!-- Phase 1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                    <button onclick="togglePhase('phase1')" class="w-full p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xl shrink-0">
+                                01
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">Entregable A</span>
+                                    <span class="text-xs text-slate-400">Semana 1-2</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Fase 1: Estudio de Mercado y Planificación</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hidden sm:inline-block">Peso: 20%</span>
+                            <i id="phase1-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div id="phase1" class="hidden px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-bullseye text-brand-500"></i>
+                                    <span>Objetivo de la Fase</span>
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                                    Definir el tema del nicho web y validar formalmente que existe demanda de búsqueda real de los usuarios en Google.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-file-lines text-emerald-500"></i>
+                                    <span>Contenido del Entregable A</span>
+                                </h4>
+                                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-xs">
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-brand-500 mt-0.5"></i>
+                                        <span><strong>Informe de Investigación:</strong> Documento explicativo del nicho elegido y su modelo de monetización (ver Anexo I).</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-brand-500 mt-0.5"></i>
+                                        <span><strong>Tabla de Palabras Clave:</strong> Hoja de cálculo con al menos 15 Keywords clasificadas según su intención (Informacional, Transaccional, Navegacional).</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                    <button onclick="togglePhase('phase2')" class="w-full p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xl shrink-0">
+                                02
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300">Entregable B</span>
+                                    <span class="text-xs text-slate-400">Semana 3-4</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Fase 2: Arquitectura y Desarrollo Web</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hidden sm:inline-block">Peso: 20%</span>
+                            <i id="phase2-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div id="phase2" class="hidden px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-sitemap text-blue-500"></i>
+                                    <span>Objetivo de la Fase</span>
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                                    Diseñar la arquitectura de información estructurada y maquetar el sitio web usando código HTML5 semántico limpio optimizado para buscadores.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-brands fa-github text-slate-700 dark:text-slate-300"></i>
+                                    <span>Contenido del Entregable B</span>
+                                </h4>
+                                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-xs">
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
+                                        <span><strong>Mapa del Sitio:</strong> Representación gráfica de la arquitectura visual de URLs.</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-blue-500 mt-0.5"></i>
+                                        <span><strong>Enlace a GitHub:</strong> Código fuente navegable (mínimo 3-4 páginas), etiquetas semánticas (`&lt;header&gt;`, `&lt;main&gt;`, `&lt;article&gt;`), jerarquía `&lt;h1&gt;`-`&lt;h3&gt;` e imágenes con atributo `alt` optimizado.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                    <button onclick="togglePhase('phase3')" class="w-full p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-xl shrink-0">
+                                03
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300">Entregable C</span>
+                                    <span class="text-xs text-slate-400">Semana 5-6</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Fase 3: Despliegue e Implementación Técnica SEO</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hidden sm:inline-block">Peso: 20%</span>
+                            <i id="phase3-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div id="phase3" class="hidden px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-rocket text-purple-500"></i>
+                                    <span>Objetivo de la Fase</span>
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                                    Publicar el sitio web en producción real mediante un servidor de hosting en la nube con HTTPS y configurar SEO técnico avanzado On-Page.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-file-shield text-purple-500"></i>
+                                    <span>Contenido del Entregable C</span>
+                                </h4>
+                                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-xs">
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-purple-500 mt-0.5"></i>
+                                        <span><strong>URL Pública:</strong> Despliegue activo en Vercel o Netlify con certificado SSL habilitado.</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-purple-500 mt-0.5"></i>
+                                        <span><strong>Memoria con Capturas:</strong> Metaetiquetas (`title`, `description`, Open Graph), marcado Schema.org en JSON-LD, `sitemap.xml`, `robots.txt` y resultado en <strong>PageSpeed Insights ≥ 85/100</strong>.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                    <button onclick="togglePhase('phase4')" class="w-full p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-xl shrink-0">
+                                04
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">Entregable D</span>
+                                    <span class="text-xs text-slate-400">Semana 7</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Fase 4: Analítica, Indexación y Seguimiento</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hidden sm:inline-block">Peso: 20%</span>
+                            <i id="phase4-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div id="phase4" class="hidden px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-chart-line text-amber-500"></i>
+                                    <span>Objetivo de la Fase</span>
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                                    Vincular el sitio con los paneles de control oficiales de Google y solicitar activamente la indexación de las páginas.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-magnifying-glass-chart text-amber-500"></i>
+                                    <span>Contenido del Entregable D</span>
+                                </h4>
+                                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-xs">
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-amber-500 mt-0.5"></i>
+                                        <span><strong>Google Search Console:</strong> Capturas de la propiedad verificada y confirmación del procesamiento correcto del `sitemap.xml`.</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-amber-500 mt-0.5"></i>
+                                        <span><strong>Google Analytics 4:</strong> Verificación del tag/código de seguimiento insertado y reporte inicial de métricas de usuario.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                    <button onclick="togglePhase('phase5')" class="w-full p-6 text-left flex items-center justify-between focus:outline-none">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-xl shrink-0">
+                                05
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300">Entregable E</span>
+                                    <span class="text-xs text-slate-400">Semana 8</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Fase 5: Presentación y Defensa del Proyecto</h3>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hidden sm:inline-block">Peso: 20%</span>
+                            <i id="phase5-icon" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div id="phase5" class="hidden px-6 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-chalkboard-user text-rose-500"></i>
+                                    <span>Objetivo de la Fase</span>
+                                </h4>
+                                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                                    Exposición oral del proyecto en el aula, demostración práctica de la web navegable en directo y respuesta a preguntas de auditoría técnica.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
+                                <h4 class="font-bold text-slate-900 dark:text-slate-200 mb-2 flex items-center space-x-2">
+                                    <i class="fa-solid fa-display text-rose-500"></i>
+                                    <span>Contenido del Entregable E</span>
+                                </h4>
+                                <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-xs">
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-rose-500 mt-0.5"></i>
+                                        <span><strong>Exposición Oral:</strong> Presentación pública en la que intervienen todos los integrantes del grupo (10-15 min por equipo).</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-check-circle text-rose-500 mt-0.5"></i>
+                                        <span><strong>Demo en Vivo:</strong> Navegación en tiempo real utilizando la URL de producción alojada en Vercel/Netlify.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6. Rúbrica de Evaluación & Calculadora -->
+        <section id="rubrica" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 block mb-2">Evaluación Transparente</span>
+                <h2 class="text-3xl font-bold mb-3">6. Rúbrica de Evaluación (100%)</h2>
+                <p class="text-slate-600 dark:text-slate-400">Cada entregable pondera un 20% sobre la nota final del proyecto. Usa el simulador para proyectar tu calificación.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Rubric Detailed Breakdown -->
+                <div class="lg:col-span-7 space-y-4">
+                    <!-- Item A -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold shrink-0">
+                            20%
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Entregable A: Investigación SEO & Keyword Research</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                                Calidad de la selección del nicho, profundización en la investigación de palabras clave y correcta adecuación a las intenciones de búsqueda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item B -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold shrink-0">
+                            20%
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Entregable B: Calidad del Código & Marcado Semántico</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                                Uso adecuado de etiquetas HTML5, jerarquía de encabezados (h1-h3), datos estructurados JSON-LD, optimización de recursos y Core Web Vitals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item C -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold shrink-0">
+                            20%
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Entregable C: Despliegue & Integración Continua</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                                Correcta gestión del repositorio en GitHub, automatización del flujo CI/CD en Vercel/Netlify y correcto funcionamiento HTTPS en línea.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item D -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold shrink-0">
+                            20%
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Entregable D: Implementación de Analítica y Rastreo</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                                Configuración de Google Search Console, envío del archivo `sitemap.xml` e integración válida de la etiqueta de Google Analytics 4.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item E -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold shrink-0">
+                            20%
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm">Entregable E: Presentación & Memoria Técnica</h3>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                                Claridad en la exposición oral, fundamentación de las decisiones técnicas y SEO adoptadas, y demostración fluida en vivo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Grade Simulator -->
+                <div class="lg:col-span-5 sticky top-24">
+                    <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-bold text-lg font-heading">Simulador de Calificación</h3>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Calculadora</span>
+                        </div>
+
+                        <div class="space-y-4 text-xs">
+                            <!-- Input A -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <label for="scoreA" class="font-medium text-slate-300">Entregable A (Investigación SEO):</label>
+                                    <span id="valA" class="font-bold text-brand-400">10 / 10</span>
+                                </div>
+                                <input type="range" id="scoreA" min="0" max="10" step="0.5" value="10" oninput="calculateGrade()" class="w-full accent-brand-500 cursor-pointer">
+                            </div>
+
+                            <!-- Input B -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <label for="scoreB" class="font-medium text-slate-300">Entregable B (Código Semántico):</label>
+                                    <span id="valB" class="font-bold text-blue-400">10 / 10</span>
+                                </div>
+                                <input type="range" id="scoreB" min="0" max="10" step="0.5" value="10" oninput="calculateGrade()" class="w-full accent-blue-500 cursor-pointer">
+                            </div>
+
+                            <!-- Input C -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <label for="scoreC" class="font-medium text-slate-300">Entregable C (Despliegue CI/CD):</label>
+                                    <span id="valC" class="font-bold text-purple-400">10 / 10</span>
+                                </div>
+                                <input type="range" id="scoreC" min="0" max="10" step="0.5" value="10" oninput="calculateGrade()" class="w-full accent-purple-500 cursor-pointer">
+                            </div>
+
+                            <!-- Input D -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <label for="scoreD" class="font-medium text-slate-300">Entregable D (Analítica & Indexación):</label>
+                                    <span id="valD" class="font-bold text-amber-400">10 / 10</span>
+                                </div>
+                                <input type="range" id="scoreD" min="0" max="10" step="0.5" value="10" oninput="calculateGrade()" class="w-full accent-amber-500 cursor-pointer">
+                            </div>
+
+                            <!-- Input E -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <label for="scoreE" class="font-medium text-slate-300">Entregable E (Defensa Oral):</label>
+                                    <span id="valE" class="font-bold text-rose-400">10 / 10</span>
+                                </div>
+                                <input type="range" id="scoreE" min="0" max="10" step="0.5" value="10" oninput="calculateGrade()" class="w-full accent-rose-500 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <!-- Result box -->
+                        <div class="mt-8 pt-6 border-t border-slate-800 text-center">
+                            <span class="text-xs uppercase tracking-wider text-slate-400 block mb-1">Nota Final Estimada</span>
+                            <div id="finalScore" class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400 font-heading">
+                                10.0
+                            </div>
+                            <span id="gradeBadge" class="inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                Sobresaliente
+                            </span>
+                            <p class="text-[11px] text-slate-400 mt-3 font-normal">
+                                <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1"></i> Se requiere una nota mínima de 4.0 en cada entregable para hacer media y aprobar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Anexo I: Modelos de Monetización -->
+        <section id="monetizacion" class="scroll-mt-20">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 block mb-2">Anexo I</span>
+                <h2 class="text-3xl font-bold mb-3">Modelos de Monetización de Webs de Nicho</h2>
+                <p class="text-slate-600 dark:text-slate-400">Cada grupo elegirá al menos un modelo de ingresos para enfocar el contenido de su proyecto.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Model 1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-rectangle-ad"></i>
+                        </div>
+                        <h3 class="font-bold text-base mb-2">1. Publicidad Programática (Display)</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Google AdSense. Ideal para blogs informacionales, guías, wikis o sitios con volumen de tráfico masivo.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-blue-600 dark:text-blue-400">
+                        Enfoque: Tráfico de Volumen
+                    </div>
+                </div>
+
+                <!-- Model 2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <h3 class="font-bold text-base mb-2">2. Marketing de Afiliación</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Amazon Afiliados, PC Componentes. Recomendado para webs de comparativas, reviews de productos y guías de compra.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                        Enfoque: Intención Transaccional
+                    </div>
+                </div>
+
+                <!-- Model 3 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <h3 class="font-bold text-base mb-2">3. Captación de Leads (Lead Gen)</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Formularios de contacto para servicios locales, consultorías técnicas o profesionales freelance.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-purple-600 dark:text-purple-400">
+                        Enfoque: Conversión B2B/B2C
+                    </div>
+                </div>
+
+                <!-- Model 4 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-colors">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-file-code"></i>
+                        </div>
+                        <h3 class="font-bold text-base mb-2">4. Productos Digitales</h3>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Venta o descarga de infoproductos, plantillas de código, cheatsheets o cursos especializados.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-amber-600 dark:text-amber-400">
+                        Enfoque: Venta Directa
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Progress Checklist Section -->
+        <section id="checklist" class="scroll-mt-20">
+            <div class="bg-gradient-to-r from-brand-900 via-slate-900 to-slate-900 text-white rounded-3xl p-8 border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 pb-6 border-b border-slate-800">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-400 block mb-1">Herramienta de Equipo</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-heading">Checklist Interactivo del Alumno</h2>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Marca las tareas completadas a lo largo de las 8 semanas. Se guardará automáticamente en tu navegador.</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center space-x-3">
+                        <div class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-2xl text-center">
+                            <span class="text-xs text-slate-400 block">Progreso Global</span>
+                            <span id="progressText" class="text-lg font-bold text-brand-400">0%</span>
+                        </div>
+                        <button onclick="resetChecklist()" class="px-3 py-2 text-xs bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-300 transition-colors">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-800 rounded-full h-3 mb-8 overflow-hidden p-0.5 border border-slate-700">
+                    <div id="progressBar" class="bg-gradient-to-r from-brand-500 to-accent-400 h-full rounded-full transition-all duration-500 w-0"></div>
+                </div>
+
+                <!-- Task Checkboxes List -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    <!-- Task Item 1 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Definir temática del nicho y modelo de monetización.</span>
+                    </label>
+
+                    <!-- Task Item 2 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Investigar al menos 15 Keywords clasificadas por intención.</span>
+                    </label>
+
+                    <!-- Task Item 3 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Diseñar el mapa del sitio (Sitemap visual).</span>
+                    </label>
+
+                    <!-- Task Item 4 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Crear repositorio Git en GitHub y sumar al equipo.</span>
+                    </label>
+
+                    <!-- Task Item 5 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Maquetar 3-4 páginas navegables con HTML5 semántico.</span>
+                    </label>
+
+                    <!-- Task Item 6 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Conectar GitHub con Vercel/Netlify para CI/CD en vivo.</span>
+                    </label>
+
+                    <!-- Task Item 7 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Añadir metaetiquetas (Title, Description, OpenGraph).</span>
+                    </label>
+
+                    <!-- Task Item 8 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Generar marcados Schema.org en JSON-LD, sitemap y robots.txt.</span>
+                    </label>
+
+                    <!-- Task Item 9 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Optimizar velocidad (PageSpeed Insights ≥ 85/100).</span>
+                    </label>
+
+                    <!-- Task Item 10 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Verificar dominio en Google Search Console y enviar sitemap.</span>
+                    </label>
+
+                    <!-- Task Item 11 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Instalar y verificar tag de Google Analytics 4 (GA4).</span>
+                    </label>
+
+                    <!-- Task Item 12 -->
+                    <label class="flex items-start space-x-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:bg-slate-800 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateProgress()" class="chk-item mt-0.5 rounded accent-brand-500 w-4 h-4">
+                        <span class="text-slate-300">Preparar presentación oral (10-15 min) y demo en vivo.</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-800 dark:text-slate-200 font-heading">PROYECTO SEO</span>
+                <span>· 1º DAM (Desarrollo de Aplicaciones Multiplataforma)</span>
+            </div>
+            <div>
+                <span>Documento didáctico interactivo para evaluación continua.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Dark Mode Toggle Logic
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize Theme from Saved Preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Accordion Toggle Logic for Phases
+        function togglePhase(phaseId) {
+            const el = document.getElementById(phaseId);
+            const icon = document.getElementById(phaseId + '-icon');
+            
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Grade Calculator Logic
+        function calculateGrade() {
+            const scoreA = parseFloat(document.getElementById('scoreA').value);
+            const scoreB = parseFloat(document.getElementById('scoreB').value);
+            const scoreC = parseFloat(document.getElementById('scoreC').value);
+            const scoreD = parseFloat(document.getElementById('scoreD').value);
+            const scoreE = parseFloat(document.getElementById('scoreE').value);
+
+            // Update range output badges
+            document.getElementById('valA').innerText = `${scoreA} / 10`;
+            document.getElementById('valB').innerText = `${scoreB} / 10`;
+            document.getElementById('valC').innerText = `${scoreC} / 10`;
+            document.getElementById('valD').innerText = `${scoreD} / 10`;
+            document.getElementById('valE').innerText = `${scoreE} / 10`;
+
+            // Calculate weighted sum (20% each = 0.20 weight)
+            const final = (scoreA * 0.2) + (scoreB * 0.2) + (scoreC * 0.2) + (scoreD * 0.2) + (scoreE * 0.2);
+            const formatted = final.toFixed(1);
+
+            const scoreDisplay = document.getElementById('finalScore');
+            const badgeDisplay = document.getElementById('gradeBadge');
+
+            scoreDisplay.innerText = formatted;
+
+            // Check if any individual deliverable is below 4.0
+            const hasFailedDeliverable = scoreA < 4 || scoreB < 4 || scoreC < 4 || scoreD < 4 || scoreE < 4;
+
+            if (hasFailedDeliverable) {
+                badgeDisplay.innerText = "Suspenso (Entregable < 4.0)";
+                badgeDisplay.className = "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+            } else if (final >= 9) {
+                badgeDisplay.innerText = "Sobresaliente";
+                badgeDisplay.className = "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+            } else if (final >= 7) {
+                badgeDisplay.innerText = "Notable";
+                badgeDisplay.className = "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30";
+            } else if (final >= 5) {
+                badgeDisplay.innerText = "Aprobado";
+                badgeDisplay.className = "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30";
+            } else {
+                badgeDisplay.innerText = "Suspenso / Revisar";
+                badgeDisplay.className = "inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+            }
+        }
+
+        // Student Checklist Logic with LocalStorage
+        const STORAGE_KEY = 'seo_dam_checklist';
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.chk-item');
+            let checkedCount = 0;
+            const states = [];
+
+            checkboxes.forEach((cb) => {
+                if (cb.checked) checkedCount++;
+                states.push(cb.checked);
+            });
+
+            const percent = Math.round((checkedCount / checkboxes.length) * 100);
+            
+            document.getElementById('progressBar').style.width = `${percent}%`;
+            document.getElementById('progressText').innerText = `${percent}%`;
+
+            // Save to LocalStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
+        }
+
+        function loadChecklist() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    const states = JSON.parse(saved);
+                    const checkboxes = document.querySelectorAll('.chk-item');
+                    checkboxes.forEach((cb, index) => {
+                        if (states[index] !== undefined) {
+                            cb.checked = states[index];
+                        }
+                    });
+                } catch (e) {
+                    console.error('Error loading checklist state', e);
+                }
+            }
+            updateProgress();
+        }
+
+        function resetChecklist() {
+            const checkboxes = document.querySelectorAll('.chk-item');
+            checkboxes.forEach((cb) => cb.checked = false);
+            localStorage.removeItem(STORAGE_KEY);
+            updateProgress();
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadChecklist();
+            calculateGrade();
+        });
+    </script>
 </body>
 </html>
